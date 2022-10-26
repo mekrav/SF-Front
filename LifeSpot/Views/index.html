@@ -3,56 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>LifeSpot</title>
-    <!--Подключение стилей по относительному пути из внешнего файла-->
     <link href="../Static/CSS/index.css" rel="stylesheet" type="text/css">
-    <script src="../Static/JS/index.js"></script>
-    <script>
-        // Создадим и обработаем сессию
-        //let session = handleSession();
 
-        // Логируем в консоль.
-        //sessionLog(session)
+    <script>
+        // обработка сессии
+        ////handleSession(logger, checker /* Коллбек-функции */);
+
+        // функция для получения пользовательского ввода
+        //const inputParseFunction = function () {
+        //return document.getElementsByTagName('input')[0].value.toLowerCase();
+        //}
     </script>
+
 </head>
-<body>
-    <header>
+    
+    <!-- Хедер страницы находится над тегом body -->
+    <header id="header-index">
         <h1>LifeSpot - прямые трансляции с улиц</h1>
         <p>Покажем, что происходит прямо сейчас</p>
+        <input type="text" oninput="filterContent()" size=50%>
     </header>
     <!--SIDEBAR-->
-    <div class="searchbar-block">
-        <input class="searchbar" type="text" oninput="filterContent(document.getElementsByTagName('input')[0].value.toLowerCase() /* Аргумент - значение, введённое пользователем*/ )" size=50%>
-        <button>Search</button>
-    </div>
-    <div class="block">
-        <!--<a href="https://www.youtube.com/watch?v=srlpC5tmhYs"></a><button>Нью-Йорк</button></a>-->
-        <!--<a href="https://www.youtube.com/watch?v=RQA5RcIZlAM"></a><button>Токио</button></a>-->
-        <!--Надеюсь стрим работает-->
-        <!--<a href="https://www.youtube.com/watch?v=hBebLGoqXCQ"><button>Поезд по Италии</button></a>-->
-
-        <div class="video-container">
-            <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/srlpC5tmhYs"
-                    title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write;
-                    encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <h3>Нью-Йорк</h3>
+    <body>
+        <!--SLIDER-->
+        <div class="bordered">
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/srlpC5tmhYs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <h3>Нью-Йорк, Брайант Парк</h3>
+            </div>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/wCcMcaiRbhM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <h3>Санкт-Петербург, Невский Проспект</h3>
+            </div>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/muVgPUnU7qA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <h3>Лондон, автобусный маршрут</h3>
+            </div>
         </div>
-
-        <div class="video-container">
-            <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/QOjmvL3e7Lc"
-                    title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write;
-                    encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <h3>Токио</h3>
-        </div>
-
-        <!--Это место проклято (ибо трансляция в примере и новая выбранная мной недоступны), просто добавлю сюда это-->
-        <div class="video-container">
-            <iframe width="560" height="315" src="https://www.youtube.com/watch?v=djV11Xbc914"
-                    title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write;
-                    encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <h3>Take On Me</h3>
-        </div>
-    </div>
-
+        <script type="text/javascript" src="../Static/JS/index.js"></script>
+    </body>
+    
     <!--FOOTER-->
-</body>
 </html>
