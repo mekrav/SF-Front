@@ -14,7 +14,7 @@ let session = {
 
 * Проверка возраста пользователя
 * 
-* */
+* 
 let checker = function (newVisit) {
     if (window.sessionStorage.getItem("userAge") >= 18) {
         // Добавим проверку на первое посещение, чтобы не показывать приветствие
@@ -28,23 +28,23 @@ let checker = function (newVisit) {
         window.location.href = "http://www.google.com"
     }
 }
-
+*/
 
 /*
 * Вывод данных сессии в консоль
 * 
-* */
+* 
 let logger = function () {
     console.log('Начало сессии: ' + window.sessionStorage.getItem("startDate"))
     console.log('Даныне клиента: ' + window.sessionStorage.getItem("userAgent"))
     console.log('Возраст пользователя: ' + window.sessionStorage.getItem("userAge"))
 }
-
+*/
 /*
 * Функция для фильтраци контента
 * Будет вызываться благодаря атрибуту oninput на index.html
 * 
-* */
+* 
 
 function filterContent(){
     let elements = document.getElementsByClassName('video-container');
@@ -59,10 +59,12 @@ function filterContent(){
         }
     }
 }
+*/
+
 /*
 * Сохранение данных сессии сразу при заходе пользователя на страницу
 *
-* */
+* 
 function handleSession(logger, checker) {
 
     // Проверяем дату захода и проставляем, если новый визит
@@ -80,17 +82,60 @@ function handleSession(logger, checker) {
         let input = prompt("Пожалуйста, введите ваш возраст?");
         window.sessionStorage.setItem("userAge", input)
 
-        /* Возраст отсутствовал в sessionStorage. Значит, это первый визит пользователя, и
-         при прохождении проверки на возраст он увидит приветствие*/
+        // Возраст отсутствовал в sessionStorage. Значит, это первый визит пользователя, и
+        // при прохождении проверки на возраст он увидит приветствие
         checker(true)
     } else {
 
-        /* Пользователь заходит не первый раз, приветствие не показываем. */
+        // Пользователь заходит не первый раз, приветствие не показываем. 
         checker(false)
     }
 
-    /* Вызываем переданную в качестве колл-бэка функцию логирования.
-        передавать в качестве коллбека не обязательно, можно вызвать и напрямую, но мы добавили для повторения.
-    */
+    // Вызываем переданную в качестве колл-бэка функцию логирования.
+    //   передавать в качестве коллбека не обязательно, можно вызвать и напрямую, но мы добавили для повторения.
+    
     logger()
 }
+*/
+
+/*
+document.addEventListener('DOMContentLoaded', function () {
+    new Splide('#image-slider').mount();
+});
+*/
+/*
+ Slider
+ */
+let slides = document.getElementsByClassName("slider__slide");
+let navlinks = document.getElementsByClassName("slider__navlink");
+let currentSlide = 0;
+
+console.log(document.getElementById("img1"));
+
+document.getElementById("nav-button--next").addEventListener("click", () => {
+    changeSlide(currentSlide + 1)
+});
+document.getElementById("nav-button--prev").addEventListener("click", () => {
+    changeSlide(currentSlide - 1)
+});
+
+function changeSlide(moveTo) {
+    if (moveTo >= slides.length) { moveTo = 0; }
+    if (moveTo < 0) { moveTo = slides.length - 1; }
+
+    slides[currentSlide].classList.toggle("active");
+    navlinks[currentSlide].classList.toggle("active");
+    slides[moveTo].classList.toggle("active");
+    navlinks[moveTo].classList.toggle("active");
+
+    currentSlide = moveTo;
+}
+
+document.querySelectorAll('.slider__navlink').forEach((bullet, bulletIndex) => {
+    bullet.addEventListener('click', () => {
+        if (currentSlide !== bulletIndex) {
+            changeSlide(bulletIndex);
+            console.log("Click!")
+        }
+    })
+})

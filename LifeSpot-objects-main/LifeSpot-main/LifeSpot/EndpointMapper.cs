@@ -50,6 +50,7 @@ public static class EndpointMapper
     {
         string footerHtml = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "footer.html"));
         string sideBarHtml = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "sidebar.html"));
+        string sliderHtml = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "slider.html"));
 
         builder.MapGet("/", async context =>
         {
@@ -59,7 +60,8 @@ public static class EndpointMapper
             // Загружаем шаблон страницы, вставляя в него элементы
             var html = new StringBuilder(await File.ReadAllTextAsync(viewPath))
                 .Replace("<!--SIDEBAR-->", sideBarHtml)
-                .Replace("<!--FOOTER-->", footerHtml);
+                .Replace("<!--FOOTER-->", footerHtml)
+                .Replace("<!--SLIDER-->", sliderHtml);
 
             await context.Response.WriteAsync(html.ToString());
         });
@@ -87,5 +89,24 @@ public static class EndpointMapper
 
             await context.Response.WriteAsync(html.ToString());
         });
+    }
+
+    /// <summary
+    ///  Mapping png
+    /// </summary>
+    public static void MapPng(this IEndpointRouteBuilder builder)
+    {
+        var pngFiles = new[] { "Adelonoen.png", "Altea.png", "Igan.png", "Mikley.png" };
+
+        foreach(var filename in pngFiles)
+        {
+            builder.MapGet($"/Static/PNG/{filename}", async context =>
+            {
+                var pngPath = Path.Combine(Directory.GetCurrentDirectory(), "Static", "PNG", filename);
+                var png = File.ReadAllBytes(pngPath);
+                context.Response.ContentType = "image/png";
+                await context.Response.Body.WriteAsync(png);
+            });
+        }
     }
 }

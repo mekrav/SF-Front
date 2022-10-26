@@ -1,22 +1,21 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>LifeSpot</title>
-        <link href="../Static/CSS/index.css" rel="stylesheet" type="text/css">
-        
-        <script type="text/javascript" src="../Static/JS/index.js"></script>
-        <script>
-            // обработка сессии
-            handleSession(logger, checker /* Коллбек-функции */);
+<head>
+    <meta charset="UTF-8">
+    <title>LifeSpot</title>
+    <link href="../Static/CSS/index.css" rel="stylesheet" type="text/css">
 
-            // функция для получения пользовательского ввода
-            const inputParseFunction = function () {
-                return document.getElementsByTagName('input')[0].value.toLowerCase();
-            }
-        </script>
-        
-    </head>
+    <script>
+        // обработка сессии
+        ////handleSession(logger, checker /* Коллбек-функции */);
+
+        // функция для получения пользовательского ввода
+        //const inputParseFunction = function () {
+        //return document.getElementsByTagName('input')[0].value.toLowerCase();
+        //}
+    </script>
+
+</head>
     
     <!-- Хедер страницы находится над тегом body -->
     <header id="header-index">
@@ -24,10 +23,9 @@
         <p>Покажем, что происходит прямо сейчас</p>
         <input type="text" oninput="filterContent()" size=50%>
     </header>
-    
     <!--SIDEBAR-->
-    
     <body>
+        <!--SLIDER-->
         <div class="bordered">
             <div class="video-container">
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/srlpC5tmhYs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -42,6 +40,7 @@
                 <h3>Лондон, автобусный маршрут</h3>
             </div>
         </div>
+        <script type="text/javascript" src="../Static/JS/index.js"></script>
     </body>
     
     <!--FOOTER-->
